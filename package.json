@@ -1,0 +1,13 @@
+{
+  "name": "Highlighter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Albino Tonnina <albinotonnina@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^22.4.3"
+  }
+}
