@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Albino Tonnina <albinotonnina@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albinotonnina/dom-to-points"
+  },
   "scripts": {
     "test": "jest"
   },
