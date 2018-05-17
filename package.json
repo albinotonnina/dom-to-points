@@ -1,6 +1,6 @@
 {
-  "name": "Highlighter",
-  "version": "1.0.0",
+  "name": "dom-to-points",
+  "version": "0.0.1-alpha",
   "main": "index.js",
   "author": "Albino Tonnina <albinotonnina@gmail.com>",
   "license": "MIT",
