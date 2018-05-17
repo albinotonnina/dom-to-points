@@ -1,5 +1,5 @@
-const {mountEls, clearDOM} = require('./mountUtilities')
-const {getBoxes, mergeLine, clusterize} = require('./highlighter')
+const {mountEls, clearDOM} = require('../utilities/mountUtilities')
+const {getBoxes, mergeLine, clusterize} = require('../highlighter')
 
 describe('Highlighter', () => {
   beforeEach(clearDOM)

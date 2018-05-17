@@ -32,7 +32,7 @@ const mountDOM = htmlString => {
 }
 
 const mountEls = file => {
-  const els = require(`./integration/${file}`)
+  const els = require(`../tests/integration/${file}`)
 
   els.forEach(el => {
     document.body.appendChild(createMockSpan(el))

@@ -1,5 +1,5 @@
-const {mountEls, clearDOM} = require('./mountUtilities')
-const {getPoints, polygonString} = require('./index')
+const {mountEls, clearDOM} = require('../utilities/mountUtilities')
+const {getPoints, polygonString} = require('../index')
 
 const testPoints = [
   [0, 0],
