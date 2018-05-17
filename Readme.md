@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/albinotonnina/dom-to-points.svg?branch=master)](https://travis-ci.org/albinotonnina/dom-to-points)
+
 # dom-to-point
 
 ## Q:What is this thing solving?
@@ -61,11 +63,11 @@ console.log('points', points)
 
 ## Q: What then?
 
-You could add a polygon to an existing SVG or create one.
+You could make a polygon with the data and add it to an SVG.
 
 You could use a library, such as [SVG.js](http://svgjs.com/elements/#polyline-constructor) or [paper.js](http://paperjs.org)
 
-Check this [jsfiddle demo](https://jsfiddle.net/albinotonnina/paoqv2c3/)
+Check this [jsfiddle demo](https://jsfiddle.net/albinotonnina/paoqv2c3/).
 
 ## Maintainers
 
