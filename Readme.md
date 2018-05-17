@@ -2,6 +2,8 @@
 
 # dom-to-point
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/albinotonnina/dom-to-points.svg)](https://greenkeeper.io/)
+
 ## Q:What is this thing solving?
 
 If you want to get an SVG like the red thing below
