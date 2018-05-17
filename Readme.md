@@ -2,7 +2,7 @@
 
 ## Q:What is this thing solving?
 
-### A: get an SVG like the red thing below
+If you want to get an SVG like the red thing below
 
 ![](https://img.ziggi.org/h731a3oG.jpg)
 
@@ -58,6 +58,14 @@ console.log('points', points)
 ]
 */
 ```
+
+## Q: What then?
+
+You could add a polygon to an existing SVG or create one.
+
+You could use a library, such as [SVG.js](http://svgjs.com/elements/#polyline-constructor) or [paper.js](http://paperjs.org)
+
+Check this [jsfiddle demo](https://jsfiddle.net/albinotonnina/paoqv2c3/)
 
 ## Maintainers
 
