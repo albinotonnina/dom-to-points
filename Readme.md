@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/albinotonnina/dom-to-points.svg?branch=master)](https://travis-ci.org/albinotonnina/dom-to-points)
-
 # dom-to-point
 
+[![Build Status](https://travis-ci.org/albinotonnina/dom-to-points.svg?branch=master)](https://travis-ci.org/albinotonnina/dom-to-points)
 [![Greenkeeper badge](https://badges.greenkeeper.io/albinotonnina/dom-to-points.svg)](https://greenkeeper.io/)
 
 ## Q:What is this thing solving?
