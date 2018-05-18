@@ -40,7 +40,7 @@ describe('index', () => {
 
       const points = getPoints('.item')
 
-      console.log('points', points)
+      // console.log('points', points)
 
       expect(points).toEqual(testPoints)
     })
@@ -52,7 +52,7 @@ describe('index', () => {
 
       const points = polygonString('.item')
 
-      console.log('polygonString', points)
+      // console.log('polygonString', points)
 
       expect(points).toEqual(testPolygonString)
     })
