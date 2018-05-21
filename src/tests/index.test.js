@@ -1,5 +1,10 @@
 const {mountEls, clearDOM} = require('../utilities/mountUtilities')
-const {getPointsArray, getPolygonString} = require('../index')
+const {
+  getPointsArray,
+  getPointsArrayFrom,
+  getPolygonString,
+  getPolygonStringFrom
+} = require('../index')
 
 const testPoints = [
   [0, 0],
@@ -54,6 +59,17 @@ describe('index', () => {
 
       expect(points).toEqual(testPoints)
     })
+
+    it('should return a shape passing elements and get relative measures', () => {
+      mountEls('manyboxes', {top: 40, left: 40})
+
+      const points = getPointsArrayFrom(
+        [...document.querySelectorAll('.item')],
+        document.querySelector('.container')
+      )
+
+      expect(points).toEqual(testPoints)
+    })
   })
 
   describe('getPolygonString: get the final shape points, polygon string', () => {
@@ -72,7 +88,16 @@ describe('index', () => {
 
       const points = getPolygonString([...document.querySelectorAll('.item')])
 
-      // console.log('polygonString', points)
+      expect(points).toEqual(testPolygonString)
+    })
+
+    it('should return a shape passing elements and get relative measures', () => {
+      mountEls('manyboxes', {top: 40, left: 40})
+
+      const points = getPolygonStringFrom(
+        [...document.querySelectorAll('.item')],
+        document.querySelector('.container')
+      )
 
       expect(points).toEqual(testPolygonString)
     })
