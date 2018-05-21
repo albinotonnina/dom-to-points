@@ -1,4 +1,4 @@
-const {getBoxes, mergeLine, clusterize} = require('./highlighter')
+const {getBoxes} = require('./highlighter')
 
 const goClockwise = (acc, item, index, array) => {
   const prevBox = array[index - 1]
@@ -38,8 +38,8 @@ const getPointsArrayFrom = (query, parentEl) => {
   const parentPos = parentEl.getBoundingClientRect()
 
   return points.map(pointGroup => [
-    pointGroup[0] - parentPos.left,
-    pointGroup[1] - parentPos.top
+    Math.floor(pointGroup[0] - parentPos.left),
+    Math.floor(pointGroup[1] - parentPos.top)
   ])
 }
 
