@@ -40,10 +40,10 @@ const mergeLine = line => {
     const dh = t + h
 
     return {
-      top: initial || t < top ? t : top,
-      left: initial || l < left ? l : left,
-      width: dw > width ? dw : width,
-      height: dh > height ? dh : height,
+      top: Math.floor(initial || t < top ? t : top),
+      left: Math.floor(initial || l < left ? l : left),
+      width: Math.floor(dw > width ? dw : width),
+      height: Math.floor(dh > height ? dh : height),
       initial: false
     }
   }
