@@ -14,10 +14,7 @@
     "size": "npm run build && size-limit",
     "prepare": "npm run build"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src"],
   "dependencies": {},
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
@@ -36,5 +33,10 @@
       "limit": "1 KB",
       "path": "dist/index.js"
     }
-  ]
+  ],
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": ["/node_modules/", "./src/tests/"]
+  }
 }

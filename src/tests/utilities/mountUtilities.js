@@ -32,7 +32,7 @@ const mountDOM = htmlString => {
 }
 
 const mountEls = (file, containerTopLeft = {top: 0, left: 0}) => {
-  const els = require(`../tests/integration/${file}`)
+  const els = require(`../integration/${file}`)
 
   const containerRect = {
     width: 900,
