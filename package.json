@@ -1,6 +1,6 @@
 {
   "name": "dom-to-points",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "author": "Albino Tonnina <albinotonnina@gmail.com>",
   "license": "MIT",
