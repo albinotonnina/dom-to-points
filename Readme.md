@@ -12,12 +12,14 @@ If you want to get an SVG like the red thing below
 ## Install
 
 ```
-yarn add dom-to-point // Package size: 640 B
+yarn add dom-to-points // Package size: 640 B
 ```
 
 ## Usage
 
 ```javascript
+import {polygonString} from 'dom-to-points'
+
 const points = polygonString('.item')
 
 console.log('polygonString', points)
