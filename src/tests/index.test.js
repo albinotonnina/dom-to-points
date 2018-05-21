@@ -1,5 +1,5 @@
 const {mountEls, clearDOM} = require('../utilities/mountUtilities')
-const {getPoints, polygonString} = require('../index')
+const {getPointsArray, getPolygonString} = require('../index')
 
 const testPoints = [
   [0, 0],
@@ -34,11 +34,21 @@ const testPolygonString =
 describe('index', () => {
   beforeEach(clearDOM)
 
-  describe('getPoints: get the final shape points, array format', () => {
-    it('should return a shape ', () => {
+  describe('getPointsArray: get the final shape points, array format', () => {
+    it('should return a shape passing a query string', () => {
       mountEls('manyboxes')
 
-      const points = getPoints('.item')
+      const points = getPointsArray('.item')
+
+      // console.log('points', points)
+
+      expect(points).toEqual(testPoints)
+    })
+
+    it('should return a shape passing elements', () => {
+      mountEls('manyboxes')
+
+      const points = getPointsArray([...document.querySelectorAll('.item')])
 
       // console.log('points', points)
 
@@ -46,11 +56,21 @@ describe('index', () => {
     })
   })
 
-  describe('polygonString: get the final shape points, polygon string', () => {
-    it('should return a shape ', () => {
+  describe('getPolygonString: get the final shape points, polygon string', () => {
+    it('should return a shape passing a query string', () => {
       mountEls('manyboxes')
 
-      const points = polygonString('.item')
+      const points = getPolygonString('.item')
+
+      // console.log('polygonString', points)
+
+      expect(points).toEqual(testPolygonString)
+    })
+
+    it('should return a shape passing elements', () => {
+      mountEls('manyboxes')
+
+      const points = getPolygonString([...document.querySelectorAll('.item')])
 
       // console.log('polygonString', points)
 

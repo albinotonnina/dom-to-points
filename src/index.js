@@ -25,7 +25,7 @@ const goAnticlock = (acc, item, index, array) => {
   return acc
 }
 
-const getPoints = query => {
+const getPointsArray = query => {
   const boxes = getBoxes(query)
   const clockWiseCoords = boxes.reduce(goClockwise, [])
   const anticlockWiseCoords = boxes.reduceRight(goAnticlock, [])
@@ -38,6 +38,6 @@ const stringifier = fn => (...args) =>
     .map(point => point.join(','))
     .join(' ')
 
-const polygonString = stringifier(getPoints)
+const getPolygonString = stringifier(getPointsArray)
 
-module.exports = {getPoints, polygonString}
+module.exports = {getPointsArray, getPolygonString}

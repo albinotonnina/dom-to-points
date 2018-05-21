@@ -8,19 +8,25 @@ describe('Highlighter', () => {
     it('should merge together all the boxes in two lines ', () => {
       mountEls('twolines')
 
-      expect(clusterize('.item')).toHaveLength(2)
+      expect(clusterize([...document.querySelectorAll('.item')])).toHaveLength(
+        2
+      )
     })
 
     it('should merge together all the boxes in three lines ', () => {
       mountEls('threelines')
 
-      expect(clusterize('.item')).toHaveLength(3)
+      expect(clusterize([...document.querySelectorAll('.item')])).toHaveLength(
+        3
+      )
     })
 
     it('should merge together many boxes in many lines ', () => {
       mountEls('manyboxes')
 
-      expect(clusterize('.item')).toHaveLength(4)
+      expect(clusterize([...document.querySelectorAll('.item')])).toHaveLength(
+        4
+      )
     })
   })
 
@@ -28,7 +34,7 @@ describe('Highlighter', () => {
     it('should merge together all the boxes in one line ', () => {
       mountEls('oneline')
 
-      const line = clusterize('.item')
+      const line = clusterize([...document.querySelectorAll('.item')])
 
       expect(mergeLine(line[0])).toMatchObject({
         left: expect.any(Number),
@@ -40,6 +46,14 @@ describe('Highlighter', () => {
   })
 
   describe('getBoxes: merge boxes in many line', () => {
+    it('should merge together all the boxes in many line ', () => {
+      mountEls('manyboxes')
+
+      const output = getBoxes([...document.querySelectorAll('.item')])
+
+      expect(output).toHaveLength(4)
+    })
+
     it('should merge together all the boxes in many line ', () => {
       mountEls('manyboxes')
 

@@ -8,8 +8,11 @@ const defaultLine = {
 
 const tolerance = 4
 
-const clusterize = query =>
-  [...document.querySelectorAll(query)].reduceRight((lines, el, index) => {
+const getEls = query =>
+  Array.isArray(query) ? query : [...document.querySelectorAll(query)]
+
+const clusterize = elements =>
+  elements.reduceRight((lines, el, index) => {
     const bbox = el.getBoundingClientRect()
 
     const item = {
@@ -55,7 +58,7 @@ const mergeLine = line => {
 }
 
 const getBoxes = query =>
-  clusterize(query)
+  clusterize(getEls(query))
     .map(cluster => mergeLine(cluster))
     .reverse()
 

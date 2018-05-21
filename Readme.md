@@ -18,9 +18,11 @@ yarn add dom-to-points // Package size: 640 B
 ## Usage
 
 ```javascript
-import {polygonString} from 'dom-to-points'
+import {getPolygonString} from 'dom-to-points'
+// or const {getPointsArray, getPolygonString} = require('dom-to-points')
 
-const points = polygonString('.item')
+const points = getPolygonString('.item')
+// or const points = getPolygonString([...document.querySelectorAll('.item')])
 
 console.log('polygonString', points)
 
@@ -30,7 +32,8 @@ console.log('polygonString', points)
 ```
 
 ```javascript
-const points = getPoints('.item')
+const points = getPointsArray('.item')
+// or const points = getPointsArray([...document.querySelectorAll('.item')])
 
 console.log('points', points)
 
