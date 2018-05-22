@@ -1,24 +1,28 @@
 const {getBoxes} = require('./highlighter')
 
-const goClockwise = (acc, item, index, array) => {
-  const prevBox = array[index - 1]
-  const yCoord = index === 0 ? item.top : prevBox.top + prevBox.height
+const goClockwise = (acc, box, i, arr) => {
+  const {
+    top: tp,
+    left: lp,
+    right: rp = box.left + box.width,
+    bottom: bp = box.top + box.height
+  } = box
 
-  const topLine = [[item.left, yCoord], [item.left + item.width, yCoord]]
-  const rightLine = [
-    [item.left + item.width, yCoord + item.height],
-    [item.left, yCoord + item.height]
-  ]
-  acc.push(...topLine, ...rightLine)
+  const tLine = [[lp, tp], [rp, tp]]
+  i === 0 && acc.push(...tLine)
+
+  const rLine = [[rp, tp], [rp, bp]]
+  acc.push(...rLine)
 
   return acc
 }
 
-const goAnticlock = (acc, item, index, array) => {
+const goAnticlock = (acc, box, index, array) => {
   const prevBox = array[index - 1]
-  const yCoord = index === 0 ? item.top : prevBox.top + prevBox.height
 
-  const leftLine = [[item.left, yCoord + item.height], [item.left, yCoord]]
+  const {top: tp, left: lp, bottom: bp = tp + box.height} = box
+
+  const leftLine = [[lp, bp], [lp, tp]]
 
   acc.push(...leftLine)
 
