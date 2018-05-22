@@ -1,6 +1,6 @@
 {
   "name": "dom-to-points",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "author": "Albino Tonnina <albinotonnina@gmail.com>",
   "license": "MIT",
@@ -15,7 +15,10 @@
     "size": "npm run build && size-limit",
     "prepare": "npm run build"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {},
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
@@ -38,6 +41,9 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "coveragePathIgnorePatterns": ["/node_modules/", "./src/tests/"]
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "./src/tests/"
+    ]
   }
 }
