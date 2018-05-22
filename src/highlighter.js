@@ -5,45 +5,48 @@ const defaultLine = {
   height: 0,
   initial: true
 }
-
-const tolerance = 4
+const tolerance = 14
 
 const getEls = query =>
   Array.isArray(query) ? query : [...document.querySelectorAll(query)]
 
 const clusterize = elements =>
-  elements.reduceRight((lines, el, index) => {
+  elements.reduceRight((lines, el) => {
     const bbox = el.getBoundingClientRect()
 
-    const item = {
-      bbox,
-      el
-    }
-
     const cluster = lines.find(line =>
-      line.find(item => Math.abs(item.bbox.top - bbox.top) <= tolerance)
+      line.find(
+        item =>
+          Math.abs(item.top + item.height - (bbox.top + bbox.height)) <=
+          tolerance
+      )
     )
 
     if (!cluster) {
-      lines.push([item])
+      lines.push([bbox])
     } else {
-      lines.splice(lines.indexOf(cluster), 1, [...cluster, item])
+      lines.splice(lines.indexOf(cluster), 1, [...cluster, bbox])
     }
 
     return lines
   }, [])
 
 const mergeLine = line => {
-  const fn = ({top, left, width, height, initial}, item) => {
-    const {top: t, left: l, width: w, height: h} = item.bbox
+  const fn = ({top, left, width, height, initial}, bbox) => {
+    const {top: t, left: l, width: w, height: h} = bbox
     const dw = l + w
     const dh = t + h
 
+    const newTop = Math.floor(initial || t < top ? t : top)
+    const newLeft = Math.floor(initial || l < left ? l : left)
+    const newWidth = Math.floor(dw > width ? dw : width)
+    const newHeight = Math.floor(dh > height ? dh : height)
+
     return {
-      top: Math.floor(initial || t < top ? t : top),
-      left: Math.floor(initial || l < left ? l : left),
-      width: Math.floor(dw > width ? dw : width),
-      height: Math.floor(dh > height ? dh : height),
+      top: newTop,
+      left: newLeft,
+      width: newWidth,
+      height: newHeight,
       initial: false
     }
   }
