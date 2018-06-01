@@ -35,12 +35,15 @@ const mergeLine = line => {
   const fn = ({top, left, width, height, initial}, bbox) => {
     const {top: t, left: l, width: w, height: h} = bbox
     const dw = l + w
-    const dh = t + h
+    const dh = t < 0 ? t - h : t + h
 
     const newTop = Math.floor(initial || t < top ? t : top)
     const newLeft = Math.floor(initial || l < left ? l : left)
     const newWidth = Math.floor(dw > width ? dw : width)
-    const newHeight = Math.floor(dh > height ? dh : height)
+    const newHeight =
+      t < 0
+        ? Math.floor(dh < height ? t + h : height)
+        : Math.floor(dh > height ? dh : height)
 
     return {
       top: newTop,
