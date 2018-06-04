@@ -5,7 +5,7 @@ const defaultLine = {
   height: 0,
   initial: true
 }
-const tolerance = 14
+const tolerance = 12
 
 const getEls = query =>
   Array.isArray(query) ? query : [...document.querySelectorAll(query)]
