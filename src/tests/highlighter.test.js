@@ -28,6 +28,25 @@ describe('Highlighter', () => {
         4
       )
     })
+
+    it('should merge together two boxes, one inside the other, vertically ', () => {
+      mountEls('inceptionboxes')
+
+      const clusterized = clusterize([...document.querySelectorAll('.item')])
+
+      expect(clusterized).toEqual([
+        expect.arrayContaining([
+          {top: 261, height: 2, left: 0, width: 100},
+          {top: 242, height: 32, left: 0, width: 100}
+        ]),
+        expect.arrayContaining([
+          {top: 209, height: 32, left: 0, width: 100},
+          {top: 209, height: 19, left: 0, width: 100},
+          {top: 227, height: 2, left: 0, width: 100},
+          {top: 221, height: 2, left: 0, width: 100}
+        ])
+      ])
+    })
   })
 
   describe('mergeLine: merge boxes in one line', () => {

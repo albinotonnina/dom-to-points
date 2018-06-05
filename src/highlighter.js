@@ -5,31 +5,45 @@ const defaultLine = {
   height: 0,
   initial: true
 }
-const tolerance = 12
 
 const getEls = query =>
   Array.isArray(query) ? query : [...document.querySelectorAll(query)]
 
-const clusterize = elements =>
-  elements.reduceRight((lines, el) => {
-    const bbox = el.getBoundingClientRect()
+const getBboxes = el => {
+  const {top, height, left, width} = el.getBoundingClientRect()
+  const bbox = {top, height, left, width}
+  Object.keys(bbox).forEach(key => (bbox[key] = Math.floor(bbox[key])))
 
-    const cluster = lines.find(line =>
-      line.find(
-        item =>
-          Math.abs(item.top + item.height - (bbox.top + bbox.height)) <=
-          tolerance
-      )
-    )
+  return bbox
+}
 
-    if (!cluster) {
-      lines.push([bbox])
-    } else {
-      lines.splice(lines.indexOf(cluster), 1, [...cluster, bbox])
-    }
+const clusterizeBboxes = (lines, bbox) => {
+  const cluster = lines.find(line => {
+    return line.find(item => {
+      return Math.abs(bbox.top + bbox.height) >= Math.abs(item.top)
+    })
+  })
 
-    return lines
-  }, [])
+  if (!cluster) {
+    // add new line
+    lines.push([bbox])
+  } else {
+    // insert in an existing line
+    lines.splice(lines.indexOf(cluster), 1, [...cluster, bbox])
+  }
+
+  return lines
+}
+
+const clusterize = elements => {
+  const bboxes = elements.map(getBboxes)
+
+  const clusteriZedBoxes = bboxes
+    .reduceRight(clusterizeBboxes, [])
+    .filter(cluster => cluster.length > 1)
+
+  return clusteriZedBoxes
+}
 
 const mergeLine = line => {
   const fn = ({top, left, width, height, initial}, bbox) => {
