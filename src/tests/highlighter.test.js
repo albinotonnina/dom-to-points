@@ -47,6 +47,23 @@ describe('Highlighter', () => {
         ])
       ])
     })
+
+    it('should merge together two boxes, one inside the other, exception ', () => {
+      mountEls('inceptionboxes1')
+      const clusterized = clusterize([...document.querySelectorAll('.item')])
+      expect(clusterized).toEqual([
+        expect.arrayContaining([
+          {top: 318, height: 1, left: 0, width: 100},
+          {top: 293, height: 26, left: 0, width: 100},
+          {top: 309, height: 1, left: 0, width: 100},
+          {top: 293, height: 26, left: 0, width: 100}
+        ]),
+        expect.arrayContaining([
+          {top: 281, height: 1, left: 0, width: 100},
+          {top: 266, height: 26, left: 0, width: 100}
+        ])
+      ])
+    })
   })
 
   describe('mergeLine: merge boxes in one line', () => {

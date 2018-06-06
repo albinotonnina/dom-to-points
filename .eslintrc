@@ -8,6 +8,7 @@
     "afterAll": true,
     "afterEach": true,
     "test": true,
+    "document": true,
     "it": true,
     "expect": true,
     "jest": true,

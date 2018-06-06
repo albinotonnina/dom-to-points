@@ -6,10 +6,12 @@ const defaultLine = {
   initial: true
 }
 
+const minClusterHeight = 2
+
 const getEls = query =>
   Array.isArray(query) ? query : [...document.querySelectorAll(query)]
 
-const getBboxes = el => {
+const getRects = el => {
   const {top, height, left, width} = el.getBoundingClientRect()
   const bbox = {top, height, left, width}
   Object.keys(bbox).forEach(key => (bbox[key] = Math.floor(bbox[key])))
@@ -18,29 +20,57 @@ const getBboxes = el => {
 }
 
 const clusterizeBboxes = (lines, bbox) => {
-  const cluster = lines.find(line => {
-    return line.find(item => {
-      return Math.abs(bbox.top + bbox.height) >= Math.abs(item.top)
-    })
-  })
+  const cluster = lines.find(line =>
+    line.some(item => Math.abs(bbox.top) + bbox.height >= Math.abs(item.top))
+  )
 
-  if (!cluster) {
-    // add new line
-    lines.push([bbox])
-  } else {
+  if (cluster) {
     // insert in an existing line
     lines.splice(lines.indexOf(cluster), 1, [...cluster, bbox])
+  } else {
+    // add new line
+    lines.push([bbox])
   }
 
   return lines
 }
 
+// const mergeHorizontally = (acc, item) => {
+//   const prevInsertedLine = acc.find(
+//     prev => prev.top + prev.height === item.top + item.height
+//   )
+
+//   if (prevInsertedLine) {
+//     const {left, width} = item
+//     const {left: l, width: w} = prevInsertedLine
+//     const dw = l + w
+
+//     const newLeft = Math.min(l, left)
+//     const newWidth = Math.max(dw, width)
+
+//     acc.splice(acc.indexOf(prevInsertedLine), 1, {
+//       ...prevInsertedLine,
+//       left: newLeft,
+//       width: newWidth
+//     })
+//   } else {
+//     acc.push(item)
+//   }
+
+//   return acc
+// }
+
+const filterOneLine = cluster =>
+  cluster.reduce((totalHeight, bbox) => totalHeight + bbox.height, 0) >
+  minClusterHeight
+
 const clusterize = elements => {
-  const bboxes = elements.map(getBboxes)
+  const bboxes = elements.map(getRects)
 
   const clusteriZedBoxes = bboxes
+    // .reduce(mergeHorizontally, [])
     .reduceRight(clusterizeBboxes, [])
-    .filter(cluster => cluster.length > 1)
+    .filter(filterOneLine)
 
   return clusteriZedBoxes
 }
