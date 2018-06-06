@@ -8,14 +8,14 @@ module.exports = [
   },
   {
     left: 40,
-    top: 100,
+    top: 101,
     width: 200,
     height: 100,
     className: 'item'
   },
   {
     left: 0,
-    top: 200,
+    top: 202,
     width: 200,
     height: 100,
     className: 'item'
