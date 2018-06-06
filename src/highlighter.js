@@ -21,7 +21,7 @@ const getRects = el => {
 
 const clusterizeBboxes = (lines, bbox) => {
   const cluster = lines.find(line =>
-    line.some(item => Math.abs(bbox.top) + bbox.height >= Math.abs(item.top))
+    line.some(item => bbox.top + bbox.height >= item.top)
   )
 
   if (cluster) {
