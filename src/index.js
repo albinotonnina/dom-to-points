@@ -37,6 +37,19 @@ const getPointsArray = query => {
   return clockWiseCoords.concat(anticlockWiseCoords)
 }
 
+const getBoxArray = query => getBoxes(query)
+
+const getBoxArrayFrom = (query, parentEl) => {
+  const boxes = getBoxArray(query)
+  const parentPos = parentEl.getBoundingClientRect()
+
+  return boxes.map(box => ({
+    ...box,
+    left: Math.floor(box.left - parentPos.left),
+    top: Math.floor(box.top - parentPos.top)
+  }))
+}
+
 const getPointsArrayFrom = (query, parentEl) => {
   const points = getPointsArray(query)
   const parentPos = parentEl.getBoundingClientRect()
@@ -57,6 +70,8 @@ const getPolygonString = stringifier(getPointsArray)
 const getPolygonStringFrom = stringifier(getPointsArrayFrom)
 
 module.exports = {
+  getBoxArray,
+  getBoxArrayFrom,
   getPointsArray,
   getPointsArrayFrom,
   getPolygonString,
