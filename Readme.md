@@ -1,5 +1,6 @@
 # dom-to-point
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c10d9599316042879b0c1956315cb9c2)](https://app.codacy.com/app/albinotonnina/dom-to-points?utm_source=github.com&utm_medium=referral&utm_content=albinotonnina/dom-to-points&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/albinotonnina/dom-to-points.svg?branch=master)](https://travis-ci.org/albinotonnina/dom-to-points)
 [![Greenkeeper badge](https://badges.greenkeeper.io/albinotonnina/dom-to-points.svg)](https://greenkeeper.io/)
 [![codecov](https://codecov.io/gh/albinotonnina/dom-to-points/branch/master/graph/badge.svg)](https://codecov.io/gh/albinotonnina/dom-to-points)
