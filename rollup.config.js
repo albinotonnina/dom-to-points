@@ -23,7 +23,7 @@ export default {
     babel({
       presets: [],
       exclude: 'node_modules/**',
-      plugins: ['external-helpers']
+      plugins: ['@babel/external-helpers']
     }),
     uglify()
   ]

@@ -1,4 +1,5 @@
 const jsdom = require('jsdom')
+const {JSDOM} = jsdom
 
 const clearDOM = () => {
   const body = document.body
@@ -8,10 +9,10 @@ const clearDOM = () => {
 }
 
 const createGlobals = () => {
-  const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
-  const win = doc.defaultView
+  const jsdom = new JSDOM('<!doctype html><html><body></body></html>')
+  const win = jsdom.window
 
-  global.document = doc
+  global.document = jsdom.window.document
   global.window = win
 
   Object.keys(window).forEach(key => {
