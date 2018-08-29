@@ -15,10 +15,7 @@
     "size": "npm run build && size-limit",
     "prepare": "npm run build"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src"],
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -48,11 +45,9 @@
   ],
   "jest": {
     "testEnvironment": "node",
+    "testURL": "http://localhost",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "./src/tests/"
-    ]
+    "coveragePathIgnorePatterns": ["/node_modules/", "./src/tests/"]
   }
 }
