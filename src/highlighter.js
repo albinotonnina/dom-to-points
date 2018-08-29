@@ -68,6 +68,7 @@ const clusterize = elements => {
   const bboxes = elements.map(getRects)
 
   const clusteriZedBoxes = bboxes
+    .sort((a, b) => a.top > b.top)
     // .reduce(mergeHorizontally, [])
     .reduceRight(clusterizeBboxes, [])
     .filter(filterOneLine)
