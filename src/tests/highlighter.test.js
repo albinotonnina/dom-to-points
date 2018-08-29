@@ -40,10 +40,9 @@ describe('Highlighter', () => {
           {top: 242, height: 32, left: 0, width: 100}
         ]),
         expect.arrayContaining([
-          {top: 209, height: 32, left: 0, width: 100},
-          {top: 209, height: 19, left: 0, width: 100},
           {top: 227, height: 2, left: 0, width: 100},
-          {top: 221, height: 2, left: 0, width: 100}
+          {top: 209, height: 32, left: 0, width: 100},
+          {top: 209, height: 19, left: 0, width: 100}
         ])
       ])
     })
@@ -54,8 +53,8 @@ describe('Highlighter', () => {
       expect(clusterized).toEqual([
         expect.arrayContaining([
           {top: 318, height: 1, left: 0, width: 100},
-          {top: 293, height: 26, left: 0, width: 100},
           {top: 309, height: 1, left: 0, width: 100},
+          {top: 293, height: 26, left: 0, width: 100},
           {top: 293, height: 26, left: 0, width: 100}
         ]),
         expect.arrayContaining([
