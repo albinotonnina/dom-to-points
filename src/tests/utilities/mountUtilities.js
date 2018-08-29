@@ -15,11 +15,11 @@ const createGlobals = () => {
   global.document = jsdom.window.document
   global.window = win
 
-  Object.keys(window).forEach(key => {
-    if (!(key in global)) {
-      global[key] = window[key]
-    }
-  })
+  // Object.keys(window).forEach(key => {
+  //   if (!(key in global)) {
+  //     global[key] = window[key]
+  //   }
+  // })
 }
 
 if (!global.document) createGlobals()
