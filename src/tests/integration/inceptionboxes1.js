@@ -7,20 +7,6 @@ module.exports = [
     className: 'item'
   },
   {
-    top: 266,
-    height: 26,
-    left: 0,
-    width: 100,
-    className: 'item'
-  },
-  {
-    top: 281,
-    height: 1,
-    left: 0,
-    width: 100,
-    className: 'item'
-  },
-  {
     top: 281,
     height: 1,
     left: 0,
@@ -35,29 +21,8 @@ module.exports = [
     className: 'item'
   },
   {
-    top: 293,
-    height: 26,
-    left: 0,
-    width: 100,
-    className: 'item'
-  },
-  {
     top: 309,
     height: 1,
-    left: 0,
-    width: 100,
-    className: 'item'
-  },
-  {
-    top: 309,
-    height: 1,
-    left: 0,
-    width: 100,
-    className: 'item'
-  },
-  {
-    top: 293,
-    height: 26,
     left: 0,
     width: 100,
     className: 'item'

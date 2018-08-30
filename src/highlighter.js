@@ -35,46 +35,16 @@ const clusterizeBboxes = (lines, bbox) => {
   return lines
 }
 
-// const mergeHorizontally = (acc, item) => {
-//   const prevInsertedLine = acc.find(
-//     prev => prev.top + prev.height === item.top + item.height
-//   )
-
-//   if (prevInsertedLine) {
-//     const {left, width} = item
-//     const {left: l, width: w} = prevInsertedLine
-//     const dw = l + w
-
-//     const newLeft = Math.min(l, left)
-//     const newWidth = Math.max(dw, width)
-
-//     acc.splice(acc.indexOf(prevInsertedLine), 1, {
-//       ...prevInsertedLine,
-//       left: newLeft,
-//       width: newWidth
-//     })
-//   } else {
-//     acc.push(item)
-//   }
-
-//   return acc
-// }
-
 const filterOneLine = cluster =>
   cluster.reduce((totalHeight, bbox) => totalHeight + bbox.height, 0) >
   minClusterHeight
 
-const clusterize = elements => {
-  const bboxes = elements.map(getRects)
-
-  const clusteriZedBoxes = bboxes
-    .sort((a, b) => a.top > b.top)
-    // .reduce(mergeHorizontally, [])
+const clusterize = elements =>
+  elements
+    .map(getRects)
+    .sort((a, b) => (a.top < b.top ? -1 : a.top > b.top ? 1 : 0))
     .reduceRight(clusterizeBboxes, [])
     .filter(filterOneLine)
-
-  return clusteriZedBoxes
-}
 
 const mergeLine = line => {
   const fn = ({top, left, width, height, initial}, bbox) => {
