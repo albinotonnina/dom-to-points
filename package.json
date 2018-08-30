@@ -1,6 +1,6 @@
 {
   "name": "dom-to-points",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "main": "dist/index.js",
   "author": "Albino Tonnina <albinotonnina@gmail.com>",
   "license": "MIT",
@@ -15,7 +15,10 @@
     "size": "npm run build && size-limit",
     "prepare": "npm run build"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -48,6 +51,9 @@
     "testURL": "http://localhost",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "coveragePathIgnorePatterns": ["/node_modules/", "./src/tests/"]
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "./src/tests/"
+    ]
   }
 }
